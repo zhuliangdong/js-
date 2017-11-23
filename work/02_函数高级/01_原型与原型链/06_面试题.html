@@ -12,33 +12,34 @@
    */
   var A = function() {
 
-  }
-  A.prototype.n = 1
+  } // A是命名函数
+  A.prototype.n = 1//添加原型属性
 
-  var b = new A()
+  var b = new A() //B是构造新函数
 
   A.prototype = {
     n: 2,
     m: 3
-  }
+  } //添加原型对象
 
-  var c = new A()
-  console.log(b.n, b.m, c.n, c.m)
+  var c = new A() //c是新构造函数
+  console.log(b.n, b.m, c.n, c.m )// 1  undefined 2 3
+  //b.n 没有n查找原型  b.m 属性和原型中找不到m　 c.n, c.m　函数中不存在ｍ，ｎ但是可以从原型中寻找
 
 
   /*
    测试题2
    */
-  var F = function(){};
+  var F = function(){};　/*名字为Ｆ的函数*/
   Object.prototype.a = function(){
     console.log('a()')
-  };
+  };/*对象原型属性为函数*/
   Function.prototype.b = function(){
     console.log('b()')
-  };
-  var f = new F();
+  };/*函数原型对象*/
+  var f = new F();/*新构建函数*/
   f.a()
-  f.b()
+  f.b()　/*报错　不是函数*/
   F.a()
   F.b()
 
